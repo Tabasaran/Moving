@@ -26,7 +26,7 @@ MonoBehaviour:
   _GDPR:
     _Prefab: {fileID: 2580100979696526431, guid: 0c04077cf270f4ad1a311dfcf1d60aef,
       type: 3}
-    _AppName: 
+    _AppName: Relocation corp
     _FixItBannerHeight: 0.85
     _Font: {fileID: 0}
     _FontScale: 1

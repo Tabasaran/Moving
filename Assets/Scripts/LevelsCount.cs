@@ -7,3 +7,4 @@ public class LevelsCount : ScriptableObject
 {
     public int Lvl;
 }
+

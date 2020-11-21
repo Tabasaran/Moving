@@ -37,6 +37,8 @@ public class BoxController : MonoBehaviour
 
     private void Awake()
     {
+        levelsCount.Lvl = PlayerPrefs.GetInt("lvl", 0);
+
         int sceneIndex = levelsCount.Lvl % (SceneManager.sceneCountInBuildSettings - 1);
 
         if ( sceneIndex == 0 && levelsCount.Lvl >= SceneManager.sceneCountInBuildSettings - 1)
@@ -132,13 +134,17 @@ public class BoxController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         boxOpenAnimation.SetActive(false);
         yield return new WaitForSeconds(0.8f);
+
+        levelsCount.Lvl++;
+        PlayerPrefs.SetInt("lvl", levelsCount.Lvl);
+
         winEffect.SetActive(true);
         yield return new WaitForSeconds(1.5f);
 
-        Analytics.Events.LevelComplete(levelsCount.Lvl, null);
+        Analytics.Events.LevelComplete(levelsCount.Lvl, levelsCount.Lvl);
 
         //Load Next Scene
-        int sceneIndex = ++levelsCount.Lvl % SceneManager.sceneCountInBuildSettings;
+        int sceneIndex = levelsCount.Lvl % SceneManager.sceneCountInBuildSettings;
 
         if (sceneIndex == 0)
         {
